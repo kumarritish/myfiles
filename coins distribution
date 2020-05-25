@@ -1,0 +1,71 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+	int n,five=0,one=0,two=0,temp=0;
+	cin>>n;
+	//temp=n;
+	if(n==0)
+	{
+		cout<<0<<" "<<0<<" "<<0<<" "<<0<<endl;
+		return 0;
+	}
+	if(n>8)
+	{
+	pool:while(n%5)
+	{
+		temp++;
+		n--;
+		//five++;
+	}
+		if(temp<4)
+		{
+			n--;
+			temp++;
+			goto pool;
+		}
+	//	cout<<temp;
+	five=n/5;
+	}
+	else
+		temp=n;
+	if(temp>2)
+	{
+		if(temp<5)
+			two++;
+		else if(temp<7)
+			two+=2;
+		else if(temp<9)
+			two+=3;
+	}
+	if(temp & 1)
+		one++;
+	else
+		one+=2;
+	cout<<(one+two+five)<<" "<<five<<" "<<two<<" "<<one<<endl;
+  return 0;
+}
+ 
+ //YOUR CODE ENDS// 
+ 
+ 
+ //SOLUTION MENTIONED BELOW // 
+ 
+ 
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n,five,two,one;
+	cin>>n;
+	five=(n-4)/5;
+	n=n-(five*5);
+	if(n%2==0)
+		one=2;
+	else
+		one=1;
+	two= (n-one)/2;
+	cout<<five+two+one<<" "<<five<<" "<<two<<" "<<one;
+}
+ 
