@@ -1,0 +1,121 @@
+//This is The Coding Area
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+  int n,amt,one,two,five,ten;
+  cin>>n>>amt>>one>>two>>five>>ten;
+  int temp1=0,temp2=0,temp5=0,temp10=0;
+  temp1=amt/100;
+  while(temp1>one)
+  {
+    if(two!=0)
+    {
+      temp1=temp1-2;
+      two--;
+      temp2++;
+    }
+    else if(five!=0)
+    {
+      temp1=temp1-5;
+      five--;
+      temp5++;
+    }
+    else if(ten!=0)
+    {
+      temp1=temp1-10;
+      ten--;
+      temp10++;
+    }
+    else
+    {
+      cout<<0;
+      return 0;
+    }
+  }
+  if(temp1<0)
+  {
+    int  temp11=amt/100;
+    int count=0;
+    while(temp11>0)
+    {
+      temp11-=10;
+      temp11-=5;
+      temp11-=2;
+      count+=3;
+    }
+    cout<<count;
+      return 0;
+  }
+  one=one-temp1;
+  int temp=temp1+temp2+temp5+temp10;
+  while(temp>n)
+  {
+      if(one!=0)
+      {
+    if(two!=0)
+    {
+    temp--;
+    two--;
+    }
+    else if(five!=0)
+    {
+        temp-=4;
+        five--;
+    }
+    else if(ten!=0)
+    {
+        temp-=9;
+        ten--;
+    }
+    else
+    {
+      cout<<0;
+      return 0;
+    }
+      }
+      
+    else  if(two!=0)
+      {
+    if(five!=0)
+    {
+        temp-=3;
+        five--;
+    }
+    else if(ten!=0)
+    {
+        temp-=8;
+        ten--;
+    }
+    else
+    {
+      cout<<0;
+      return 0;
+    }
+      }
+      else  if(five!=0)
+      {
+        if(ten!=0)
+    {
+        temp-=5;
+        ten--;
+    }
+    else
+    {
+      cout<<0;
+      return 0;
+    }
+      }
+      else
+    {
+      cout<<0;
+      return 0;
+    }
+    //temp=temp1+temp2+temp5+temp10;
+  }
+    
+  cout<<temp;
+  return 0;
+}
+      
+    		
