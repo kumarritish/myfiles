@@ -1,0 +1,83 @@
+/*
+// Sample code to perform I/O:
+
+cin >> name;                            // Reading input from STDIN
+cout << "Hi, " << name << ".\n";        // Writing output to STDOUT
+
+// Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+*/
+
+// Write your code here
+#include<bits/stdc++.h>
+using namespace std;
+#define n 100000
+int prime[n+1];
+void sieve()
+{
+    for(int i=0;i<=n;i++)
+    prime[i]=1;
+    for(int p=2;p*p<=n;p++)
+    {
+        if(prime[p]==1)
+        {
+            for(int i=p*p;i<=n;i+=p)
+            prime[i]=0;
+        }
+    }
+    prime[1]=0;
+    for(int p=2;p<=n;p++)
+    prime[p]+=prime[p-1];
+}
+int main()
+{
+    sieve();
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        float r1,r2;
+        cin>>r1>>r2;
+        r1=r1/r2;
+        int l;
+        cin>>l;
+        string s;
+        cin>>s;
+        if((s.at(0)=='*') || (s.at(l-1)=='*'))
+        {
+            cout<<"No way!"<<endl;
+            return 0;
+        }
+        int i=1,a=0,step=0;
+        while(i<l)
+        {
+            a=prime[i];
+            if((((float)a/i)>=r1) and (i+a)<=l)
+            {
+                if(s.at(i+a-1)!='*')
+                {
+                i=i+a;
+                step++;
+                continue;
+                }
+            }
+            if((i+2)<=l and s.at(i+1)!='*')
+            {
+                i=i+2;
+                step++;
+            }
+            else if((i+1<=l) and s.at(i)!='*')
+            {
+                i++;
+                step++;
+            }
+            else
+            {
+                cout<<"No way!"<<endl;
+                return 0;
+            }
+            
+        }
+        cout<<step<<endl;
+    }
+    return 0;
+}
