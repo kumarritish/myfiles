@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+  //Type your code here.
+  int a,b,c,d;
+  cin>>a>>b>>c>>d;
+  float x=a/6;
+  int y=d/6;
+  int z=d%6;
+  float i=((float)y+(float)z/10);
+  float j=c/i;
+  float k=b/x;
+  cout<<x<<endl<<fixed<<setprecision(1)<<i<<endl<<j<<endl<<k;
+  if(j>k)
+  {
+    cout<<endl<<"Eligible to Win";
+  }
+  else
+    cout<<endl<<"Not Eligible to Win";
+  return 0;
+}
