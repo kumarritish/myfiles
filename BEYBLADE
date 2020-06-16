@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+   int t;
+   cin>>t;
+   while(t--)
+   {
+       int n,temp;
+       cin>>n;
+       vector<long long> arr;
+       vector<long long> brr;
+       for(int i=0;i<n;i++)
+       {
+       cin>>temp;
+       arr.push_back(temp);
+       }
+       
+       for(int j=0;j<n;j++)
+       {
+       cin>>temp;
+       brr.push_back(temp);
+       }
+       
+       sort(arr.begin(),arr.end());
+       sort(brr.begin(),brr.end());
+       
+       int count=0;
+       for(int i=0;i<n;i++)
+       {
+           for(auto j=brr.begin();j!=brr.end();j++)
+           {
+                if(arr[i]>(*j))
+                {
+                    count++;
+                    brr.erase(j);
+                    break;
+                }
+           }
+           
+       }
+       cout<<count;
+       
+   }
+   return 0;
+}
