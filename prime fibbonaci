@@ -1,0 +1,61 @@
+//This is The Coding Area
+#include<bits/stdc++.h>
+using namespace std;
+vector<int> arr;
+void isprime(int n1,int n2)
+{
+    for(int i=n1;i<=n2;i++)
+    {
+      bool flag=true;
+      for(int j=2;j<=sqrt(i);j++)
+        if(i%j==0)
+          flag=false;
+      if(flag)
+        arr.push_back(i);
+    }
+}
+
+int main()
+{
+  int n1,n2;
+  cin>>n1>>n2;
+  isprime(n1,n2);
+  set<int> s;
+  for(auto i:arr)
+  {
+    for(auto j:arr)
+    {
+      if(j<10)
+        s.insert((i*10)+j);
+        
+        else
+          s.insert((i*100)+j);
+     }
+  }
+  
+  vector<int> brr;
+  for(auto i=s.begin();i!=s.end();i++)
+  {
+ 	bool flag=true;
+  	for(int j=2;j<=sqrt(*i);j++)
+        {if((*i%j)==0)
+          flag=false;
+        } 
+    if(flag)
+      brr.push_back(*i);
+  }
+  int n=brr.size();
+  auto u=brr.begin();
+  int a=*u;
+  u=brr.end();
+  u--;
+  int b=*u;
+  long long arr[n];
+  arr[0]=a;
+  arr[1]=b;
+  for(int i=2;i<n;i++)
+  {
+    arr[i]=arr[i-1]+arr[i-2];
+  }
+  cout<<arr[n-1];
+}
