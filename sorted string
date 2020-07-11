@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int solve (int n, string s) {
+   // Write your code here
+   int ans=0;
+   for(int i=1;i<=n;i++)
+   {
+      for(int j=0;j<=(n-i);j++)
+      {
+         int k=j+i-1;
+         int a=0,c=0;
+         for(int l=j;l<=k;l++)
+         {
+            //cout<<s[l];
+            if(s[l]=='a')
+            a++;
+            else if(s[l]=='c')
+            c++;
+         }
+         if(a>c)
+         ans++;
+
+         
+         //cout<<endl;
+      }
+   }
+   ans=ans%1000000007;
+   return ans;
+}
+
+int main() {
+
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int n;
+    cin >> n;
+    string s;
+    cin.ignore();
+    getline(cin, s);
+
+    int out_;
+    out_ = solve(n, s);
+    cout << out_;
+}
