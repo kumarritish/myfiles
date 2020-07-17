@@ -1,0 +1,24 @@
+//This is The Coding Area
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+  int p,q,r,s;
+  cin>>p>>q>>r>>s;
+  int res=0;
+  for(int i=p;i<=q;i++)
+  {
+    for(int j=r;j<=s;j++)
+    {
+      int temp1=max(i,j);
+      int temp2=min(i,j);
+      while(temp1 && temp2)
+      {
+        res+=(temp1/temp2);
+        temp1=temp1%temp2;
+        swap(temp1,temp2);
+      }
+    }
+  }
+  cout<<res;
+}
