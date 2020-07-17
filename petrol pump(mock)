@@ -1,0 +1,55 @@
+//This is The Coding Area
+#include<bits/stdc++.h>
+using namespace std;
+bool pump(vector<int> v,int n,int k)
+{
+    int x[v.size()];
+    int j=v.size()-1;
+    while(n>0)
+    {
+        x[j]=n%2;
+        n=n/2;
+        j--;
+    }
+    int sum=0;
+  	int temp=v.size();
+    for(int i=0;i<temp;i++)
+    {
+        if(x[i]==1)
+        {
+            sum+=v[i];
+        }
+    }
+    if(sum==k)
+    return true;
+    else
+    return false;
+}
+int main()
+{
+    vector<int> v;
+    long long temp;
+    while(cin>>temp)
+    v.push_back(temp);
+    
+    long long sum=0;
+    for(auto u:v)
+    sum+=u;
+    
+    temp=sum/2;
+    long long x=pow(2,v.size());
+    while(1)
+    {
+    for(long long i=1;i<x;i++)
+    {
+        if(pump(v,i,temp))
+        {
+            cout<<(max(temp,sum-temp)%1000000007);
+            return 0;
+        }
+    }
+    temp++;
+    }
+    
+    return 0;
+}
