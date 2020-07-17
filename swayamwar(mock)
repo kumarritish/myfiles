@@ -1,0 +1,24 @@
+//This is The Coding Area
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    long long n;
+    cin>>n;
+    string b,g;
+    cin>>b>>g;
+    long long count=0;
+    for(int i=0;b[i];i++)
+    {
+        auto j=find(g.begin(),g.end(),b[i]);
+        if(j!=g.end())
+        {
+            g.erase(j);
+            count++;
+        }
+        else
+        break;
+    }
+    cout<<(n-count);
+    return 0;
+}
