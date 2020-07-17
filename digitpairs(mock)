@@ -1,0 +1,44 @@
+//This is The Coding Area
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    long long n,temp,x,y,z,ans=0;
+    cin>>n;
+    long long arr[10],brr[10];
+    for(long long i=0;i<10;i++)
+    {
+        arr[i]=0;
+        brr[i]=0;
+    }
+    for(long long i=0;i<n;i++)
+    {
+       cin>>temp;
+       x=temp%10;
+       y=(temp/10)%10;
+       z=temp/100;
+       long long ma=max(x,max(y,z));
+       long long mi=min(x,min(y,z));
+       temp=(((ma*11)+(mi*7))%100)/10;
+       if(i%2 ==0)
+       {
+           arr[temp]++;
+       }
+       else
+       brr[temp]++;
+    }
+    for(long long i=0;i<10;i++)
+    {
+        temp=max(arr[i],brr[i]);
+        if(temp>1)
+        {
+            if(temp>2)
+            ans+=2;
+            else
+            ans++;
+        }
+    }
+    cout<<ans;
+    
+    return 0;
+}
