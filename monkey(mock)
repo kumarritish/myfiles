@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool check(int crr[],int n)
+{
+    
+    for(int i=0;i<n;i++)
+    {
+        if(crr[i]!=(i))
+        return true;
+    }
+    return false;
+}
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,temp,count=0;
+        cin>>n;
+        int arr[n];
+        int brr[n];
+        int crr[n];
+        for(int i=0;i<n;i++)
+        {
+            cin>>arr[i];
+            arr[i]--;
+            crr[i]=i;
+            //crr.push_back(0);
+        }
+        //int j=6;
+        
+       do {
+           for(int i=0;i<n;i++)
+           {
+               brr[i]=crr[i];
+           }
+             //count=0;
+            for(int i=0;i<n;i++)
+            {
+                crr[arr[i]]=brr[i];
+            }
+            count++;
+        }while(check(crr,n));
+        
+        
+        cout<<count<<endl;
+        
+        
+    }
+    return 0;
+}
